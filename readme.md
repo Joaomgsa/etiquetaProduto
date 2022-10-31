@@ -15,4 +15,4 @@ exemplo (próxima página). Para produtos
 importados, a taxa e alfândega deve ser
 acrescentada ao preço final do produto.</p>
 
-<img src="produtos.png">
+<img src="/src/produtos.png">
