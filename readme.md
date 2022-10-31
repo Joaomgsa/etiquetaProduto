@@ -15,5 +15,4 @@ exemplo (próxima página). Para produtos
 importados, a taxa e alfândega deve ser
 acrescentada ao preço final do produto.</p>
 
-## Diagrama de Classes
 <img src="/src/produtos.png">
