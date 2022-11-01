@@ -2,17 +2,18 @@ package application;
 
 import entities.ImportedProduct;
 import entities.Product;
+import entities.UsedProduct;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Scanner;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class Program {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
 
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
 
         System.out.println("Enter the number of products : ");
@@ -33,25 +34,27 @@ public class Program {
                 case 'c':
                     list.add(new Product(name,price));
                 break;
-                //falta colocar o SDF para capturar a data.
+
                 case 'u':
                     System.out.print("Manufacture date DD/MM/YY :");
+                    Date date = sdf.parse(sc.next());
+                    list.add(new UsedProduct(name, price, date));
                 break;
 
                 case 'i':
                     System.out.print("Customs fee:  ");
                     double customFee = sc.nextDouble();
                     list.add(new ImportedProduct(name, price, customFee));
+                    break;
             }
 
             System.out.println();
-            System.out.println("Price Tag");
+            System.out.println("Price Tags");
 
 
-            //falta ajustar formatos para aparecer datas e condicionais para imprimir produtos diferentes(Provavelmente outro switch)
             for (Product product : list
             ){
-                System.out.println(product.getName()+ "$" + String.format("%.2f", product.getPrice()) );
+                System.out.println(product.priceTag());
             }
 
             sc.close();
